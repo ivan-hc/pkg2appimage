@@ -15,14 +15,10 @@ cd build/
 # apt download -y apt libapt-pkg5.0 libbz2-1.0 liblzma5 multiarch-support zlib1g dpkg
 apt download -y dpkg # We are still using dpkg-deb to extract debs, so we need to bundle it
 
-# Include legacy appimagetool in the AppDir
-wget -c "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$SYSTEM_ARCH.AppImage" # FIXME: Make arch independent
-chmod +x ./*.AppImage
-./appimagetool-*.AppImage --appimage-extract && mv ./squashfs-root ./pkg2appimage.AppDir && rm -f ./appimagetool-*.AppImage
-
-# Download recommended appimagetool build to create pkg2appimage AppImage
 wget -c "https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$SYSTEM_ARCH.AppImage" # FIXME: Make arch independent
 chmod +x ./*.AppImage
+
+./appimagetool-*.AppImage --appimage-extract && mv ./squashfs-root ./pkg2appimage.AppDir
 cd ./pkg2appimage.AppDir
 
 find ../*.deb -exec dpkg-deb -x {} . \; || true
