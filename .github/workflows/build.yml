@@ -47,8 +47,10 @@ jobs:
 
     - name: Test to create neovim AppImage
       run: |
-        chmod +x ./pkg2appimage*.AppImage*
-        ./pkg2appimage*.AppImage* recipes/neovim.yml
+        mkdir -p ./out
+        mv pkg2appimage*.AppImage* ./out/
+        #chmod +x ./out/pkg2appimage*.AppImage*
+        ./out/pkg2appimage*.AppImage* recipes/neovim.yml
 
     - name: Verify AppImage Creation and Test
       run: |
@@ -69,4 +71,4 @@ jobs:
     - name: Release
       run: |
         wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-        bash upload.sh ./pkg2appimage*.AppImage*
+        bash upload.sh ./out/pkg2appimage*.AppImage*
