@@ -53,4 +53,5 @@ delete_blacklisted
 rm usr/lib/*-gnu/liblzma.so.5
 
 cd ..
-NO_GLIBC_VERSION=true APP=pkg2appimage VERSION=$GIT_SHORT_REV generate_type2_appimage # FIXME: This embeds bintray-zsync
+UPINFO="gh-releases-zsync|$GITHUB_REPOSITORY_OWNER|pkg2appimage|latest|*$SYSTEM_ARCH.AppImage.zsync"
+NO_GLIBC_VERSION=true APP=pkg2appimage VERSION=$GIT_SHORT_REV ARCH="$SYSTEM_ARCH" ./appimagetool-*.AppImage -u "$UPINFO" ./pkg2appimage.AppDir # FIXME: This embeds bintray-zsync
