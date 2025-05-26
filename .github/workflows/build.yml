@@ -17,8 +17,8 @@ jobs:
     strategy:
       matrix:
         config:
-          - runner: ubuntu-20.04
-            image: ubuntu:20.04
+          - runner: ubuntu-22.04
+            image: ubuntu:22.04
           - runner: ubuntu-22.04-arm
             image: ubuntu:22.04
     container:
