@@ -47,6 +47,7 @@ jobs:
 
     - name: Test to create neovim AppImage
       run: |
+        set -x
         mkdir -p ./out
         appimage_path=$(find . -name pkg2appimage*AppImage)
         zsync_path=$(find . -name pkg2appimage*AppImage.zsync)
